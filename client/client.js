@@ -5,6 +5,6 @@ import App from '../components/App';
 render (
 	// define the encompassing component,
 	// DOM element we want to mount it to.
-	<App />,
+	<App/>,
 	document.getElementById('app')
 );
