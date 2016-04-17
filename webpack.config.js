@@ -1,12 +1,13 @@
-import webpack from 'webpack';
+var webpack = require('webpack');
 
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: [
+		'webpack-hot-middleware/client',
 		'./client/client.js'
 	],
 	output: {
-		path: './dist',
+		path: require('path').resolve('./dist'),
 		filename: 'bundle.js',
 		publicPath: '/'
 	},
@@ -22,12 +23,7 @@ module.exports = {
 				loader: 'babel-loader',
 				exclude: /node_modules/,
 				query: {
-					presets: ['es2015', 'react'],
-					env: {
-						development: {
-							presets: ['react-hmre']
-						}
-					}
+					presets: ['es2015', 'react', 'react-hmre']
 				}
 			}
 		]
