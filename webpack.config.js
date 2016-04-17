@@ -1,4 +1,7 @@
+import webpack from 'webpack';
+
 module.exports = {
+	devtool: 'inline-source-map',
 	entry: [
 		'./client/client.js'
 	],
@@ -7,6 +10,11 @@ module.exports = {
 		filename: 'bundle.js',
 		publicPath: '/'
 	},
+	plugins: [
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoErrorsPlugin()
+	],
 	module: {
 		loaders: [
 			{
@@ -14,7 +22,12 @@ module.exports = {
 				loader: 'babel-loader',
 				exclude: /node_modules/,
 				query: {
-					presets: ['es2015', 'react']
+					presets: ['es2015', 'react'],
+					env: {
+						development: {
+							presets: ['react-hmre']
+						}
+					}
 				}
 			}
 		]
