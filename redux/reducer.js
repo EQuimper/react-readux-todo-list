@@ -27,6 +27,13 @@ let reducer = function(state, action) {
 					return todo.id !== action.id;
 				})
 			});
+		case 'CREATE_USER_ID':
+			return Object.assign({}, state, {
+				user: {
+					username: state.user.username,
+					id: action.id
+				}
+			});
 		default:
 			return state;
 	}
