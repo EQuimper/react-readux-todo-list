@@ -7,14 +7,14 @@ import actions from '../redux/actions';
 import UserInfo from './UserInfo';
 
 class App extends Component {
-	
+
 	render() {
 		return(
 			<div>
 				<h1>Todo List</h1>
 				<UserInfo
 					user={this.props.user}
-					createNewUserId={this.props.actions.createNewUserId}
+					actions={this.props.actions}
 				/>
 				<TodoInput
 					addTodo={this.props.actions.addTodo}
